@@ -34,6 +34,7 @@ function InputField(props) {
           onBlur={onBlur}
           required
           fullWidth
+          autoComplete="Username"
           autoFocus
         />
       )}

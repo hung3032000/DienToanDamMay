@@ -1,40 +1,67 @@
-# Create React App example
+# ReactJS Project 
 
-## How to use
 
-Download the example [or clone the repo](https://github.com/mui-org/material-ui):
+## Folder structure
 
-<!-- #default-branch-switch -->
-
-```sh
-curl https://codeload.github.com/mui-org/material-ui/tar.gz/master | tar -xz --strip=2 material-ui-master/examples/create-react-app
-cd create-react-app
+```
+src
+|__ components (shared components between features)
+|  |__ Loading
+|     |__ index.jsx
+|     |__ styles.scss
+|
+|__ features
+|  |__ Todo
+|     |__ components (components of feature Todo)
+|     |__ pages (pages of feature Todo)
+|     |__ index.jsx (entry point of feature Todo)
+|
+|__ App.js        
 ```
 
-Install it and run:
+FiltersViewer 
 
-```sh
-npm install
-npm start
+```js
+const filters = {
+  isPromotion: true,
+  salePrice_lte: 100,
+  salePrice_gte: 100,
+}
 ```
 
-or:
+FILTER_LIST
+- id: number
+- getLabel: (filters) => string
+- isActive: (filters) => true/false
+- isVisible: (filters) => true/false
+- isRemovable: boolean
+- onRemove: func
+- onToggle: func
 
-<!-- #default-branch-switch -->
 
-[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/mui-org/material-ui/tree/master/examples/create-react-app)
+```
+DetailPage handleSubmit
+|__ AddToCartForm (form management)
+|  |__ QuantityField
+``` 
 
-## The idea behind the example
 
-<!-- #default-branch-switch -->
+/products/:productId --> ProductDescription
+/products/:productId/additional --> ProductAdditional
+/products/:productId/reviews --> ProductReviews
 
-This example demonstrates how you can use [Create React App](https://github.com/facebookincubator/create-react-app).
-It includes `@mui/material` and its peer dependencies, including `emotion`, the default style engine in MUI v5.
-If you prefer, you can [use styled-components instead](https://mui.com/guides/interoperability/#styled-components).
 
-## What's next?
 
-<!-- #default-branch-switch -->
+DetailPage
+Click Chon Mua
+Open Mini Cart
+Go to Cart Page
 
-You now have a working example project.
-You can head back to the documentation, continuing browsing it from the [templates](https://mui.com/getting-started/templates/) section.
+Cart
+- showMiniCart: true / false
+- cartItems -> item (product, quantity)
+
+State tính toán phụ thuộc vào state có sẵn
+- cartItemsCount
+- cartTotal
+--> createSelector()

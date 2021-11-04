@@ -1,18 +1,27 @@
-import * as React from "react";
-import ReactDOM from "react-dom";
-import CssBaseline from "@mui/material/CssBaseline";
-import { ThemeProvider } from "@mui/material/styles";
-import App from "./App";
-import theme from "./theme";
-import { Provider } from "react-redux";
-import store from "./app/store";
+import { SnackbarProvider } from 'notistack';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import App from './App';
+import store from './app/store';
+import './index.css';
+import * as serviceWorker from './serviceWorker';
+
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
-    {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-    <CssBaseline />
+  <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <SnackbarProvider anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
+          <App />
+        </SnackbarProvider>
+      </BrowserRouter>
     </Provider>
-  </ThemeProvider>,
-  document.querySelector("#root")
+  </React.StrictMode>,
+  document.getElementById('root')
 );
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();

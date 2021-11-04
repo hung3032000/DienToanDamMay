@@ -5,7 +5,5 @@
     "baseUrl": "src",
     "moduleResolution": "node"
   },
-  "include": [
-    "src/**/*"
-  ]
+  "include": ["src/**/*"]
 }
